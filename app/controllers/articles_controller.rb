@@ -7,9 +7,15 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    session[:page_views] ||=0
+    session[:page_views] +=1
+    binding.pry
     article = Article.find(params[:id])
+
     render json: article
   end
+
+
 
   private
 
